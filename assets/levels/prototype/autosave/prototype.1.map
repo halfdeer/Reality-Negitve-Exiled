@@ -1,0 +1,17 @@
+// Game: Reality Negitve Exiled
+// Format: Standard
+// entity 0
+{
+"classname" "worldspawn"
+"_tb_mod" "textures"
+"_tb_textures" "textures;textures/prototype (by kenny);textures/prototype (by kenny)/Dark;textures/prototype (by kenny)/Green;textures/prototype (by kenny)/Light;textures/prototype (by kenny)/Orange;textures/prototype (by kenny)/Purple;textures/prototype (by kenny)/Red"
+// brush 0
+{
+( -288 -64 -16 ) ( -288 -63 -16 ) ( -288 -64 -15 ) texture_01 0 0 0 1 1
+( -64 -288 -16 ) ( -64 -288 -15 ) ( -63 -288 -16 ) texture_01 0 0 0 1 1
+( -64 -64 -16 ) ( -63 -64 -16 ) ( -64 -63 -16 ) texture_01 0 0 0 1 1
+( 64 64 16 ) ( 64 65 16 ) ( 65 64 16 ) texture_01 0 0 0 1 1
+( 64 288 16 ) ( 65 288 16 ) ( 64 288 17 ) texture_01 0 0 0 1 1
+( 288 64 16 ) ( 288 64 17 ) ( 288 65 16 ) texture_01 0 0 0 1 1
+}
+}
