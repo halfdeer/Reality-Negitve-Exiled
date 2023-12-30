@@ -1,5 +1,7 @@
 extends PlayerState
 
+var was_sprinting : bool = false
+
 #Jump State
 func _on_jump_state_entered():
 	player.jump()

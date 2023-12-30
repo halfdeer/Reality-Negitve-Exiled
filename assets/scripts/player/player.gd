@@ -3,14 +3,17 @@ class_name Player
 
 @export_group("Speed")
 @export var walk_speed = 8.0
+@export var sprint_speed = 12.0
 @export var air_speed = 9.0
 @export var slide_speed = 8.0
 
 @export var walk_deccel = 0.9
+@export var sprint_deccel = 0.8
 @export var air_deccel = 0.4
 @export var slide_deccel = 0.005
 
 @export var walk_accel = 8.0
+@export var sprint_accel = 8.0
 @export var air_accel = 4.0
 @export var slide_accel = 8.0
 
@@ -23,8 +26,8 @@ class_name Player
 @export var vault_v_move_time := 0.2
 #@export var vault_h_move_time := 0.0
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 19.8
+var was_sprinting : bool = false
 
 @onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak)# * -1.0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak))# * -1.0
@@ -35,7 +38,10 @@ var gravity = 19.8
 
 @onready var camera_mount : Node3D = $CameraMount
 @onready var visuals : Node3D = $Visuals
+
 @onready var player_state_chart : StateChart = $PlayerStateChart
+@onready var vault_state : CompoundState = $PlayerStateChart/Movement/Vault
+
 @onready var animation_tree : AnimationTree = $AnimationTree
 
 @onready var body_cast = $Visuals/BodyCast

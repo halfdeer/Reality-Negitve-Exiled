@@ -1,5 +1,8 @@
 extends PlayerState
 
+func _on_idle_state_entered():
+	player.was_sprinting = false
+
 
 #Idle State
 func _on_idle_state_processing(delta):

@@ -1,6 +1,5 @@
 extends PlayerState
 
-
 #Vault
 func _on_vault_state_entered():
 	await player.animation_tree.animation_started
@@ -18,10 +17,17 @@ func _on_vault_state_entered():
 	player.velocity = forward_movement
 	
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_foreward") or Input.is_action_pressed("move_backward"):
-			player.player_state_chart.send_event("walk")
+			if player.was_sprinting:
+				player.player_state_chart.send_event("sprint")
+			else:
+				player.player_state_chart.send_event("walk")
 	else:
 			player.player_state_chart.send_event("idle")
 
 
 func _on_vault_state_physics_processing(_delta):
 	player.move_and_slide()
+
+
+func _on_vault_state_exited():
+	pass

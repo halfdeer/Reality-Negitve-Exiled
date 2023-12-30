@@ -1,13 +1,13 @@
 extends PlayerState
 
-func _on_walk_state_entered():
-	player.was_sprinting = false
+
+func _on_sprint_state_entered():
+	player.was_sprinting = true
 
 
-#Walk State
-func _on_walk_state_physics_processing(delta):
+func _on_sprint_state_physics_processing(delta):
 	player.apply_gravity(delta)
-	player.walk(delta)
+	player.walk(delta, player.sprint_speed, player.sprint_deccel, player.sprint_accel)
 	
 	if Input.is_action_just_pressed("move_jump"):
 		player.player_state_chart.send_event("jump")
@@ -18,14 +18,14 @@ func _on_walk_state_physics_processing(delta):
 	if not player.is_on_floor():
 		player.player_state_chart.send_event("fall")
 	
-	if Input.is_action_pressed("parkour_sprint"):
-		player.player_state_chart.send_event("sprint")
-	
 	if player.can_climb() and Input.is_action_pressed("parkour_vault"):
-		player.player_state_chart.send_event("vault")
+		player.player_state_chart.send_event("vault from sprint")
 	
-	if Input.is_action_just_pressed("move_slide"):
+	if Input.is_action_pressed("move_slide"):
 		player.player_state_chart.send_event("slide")
 	
 	player.move_and_slide()
 
+
+func _on_sprint_state_exited():
+	pass # Replace with function body.

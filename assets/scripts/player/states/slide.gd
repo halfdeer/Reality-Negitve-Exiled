@@ -13,7 +13,7 @@ func _on_slide_state_physics_processing(delta):
 	player.apply_gravity(delta, player.get_gravity() * 2.0)
 	if player.is_on_floor():
 		player.look_towards(player.visuals, player.position + player.velocity, delta, 6.0)
-		player.visuals.rotation.x = lerp(player.visuals.rotation.x, -player.get_floor_angle(Vector3.UP), 0.5)
+		player.visuals.global_rotation.x = lerp(player.visuals.global_rotation.x, deg_to_rad(-player.get_floor_angle(Vector3.UP)), 0.5)
 	else:
 		player.look_towards(player.visuals, player.position + player.velocity, delta, 6.0)
 	player.velocity.x = lerp(player.velocity.x, player.velocity.x + (player.get_floor_normal().x * 6.0), 1)
